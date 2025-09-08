@@ -17,7 +17,7 @@ Not for mainnet: This version is unsafe for production since it allows infinite 
 
 🚧 v0.2 – Cap-Enforced Token (Final Design)
 
-Max Supply: 990,000,000 TREE tokens (with 18 decimals).
+Max Supply: XXXXX TREEV tokens .
 
 Minting Rules:
 
