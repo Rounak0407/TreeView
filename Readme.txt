@@ -75,7 +75,7 @@ Solo founder building TreeView end-to-end: mobile app, AI models, backend, conso
 
 TreeView will be:
 
-🌍 The first community-owned spatial intelligence layer
+🌍 The first community-owned 3D&4D Map of world.(With better positioning data than Centralized maps)
 
 🛰️ The first NFT-DAO to launch mapping satellites
 
@@ -91,5 +91,6 @@ TreeView will be:
 🌐 Website: Under development
 
 📜 License
+
 
 This repository is for demonstration and pre-seed purposes only. Code will be open-sourced in phases.
