@@ -1,96 +1,251 @@
-TreeView – Decentralized 4D Mapping Network
-
-TreeView is building the first decentralized 4D mapping network powered by community-contributed multimodal data and AI. Our mission is to create a permissionless, continuously updated, and semantically rich map of the world — owned by the people who build it.
-
-🚨 Problem
-
-Today's digital maps are:
-
-❌ Outdated or low-resolution
-
-❌ Closed and centralized
-
-❌ Lacking semantic understanding (objects, terrain, context)
-
-❌ Not designed for autonomous systems, AR/VR, or Earth monitoring
-
-✅ Solution
-
-TreeView is a DePIN (Decentralized Physical Infrastructure Network) where:
-
-📱 Contributors upload videos & sensor data from mobile devices, dashcams, drones, etc.
-
-🧠 Our on-device + cloud AI pipeline fuses video, LiDAR, GPS, depth, segmentation, and object detection into high-fidelity 3D/4D maps.
-
-🛰️ We are launching the first community-owned satellite initiative, governed and funded via an NFT-DAO, to capture global high-altitude data.
-
-🌳 Semantic metadata enables Earth environment management (forest health, urban planning, disaster detection, etc.)
-
-💰 Contributors earn tokens for their data, validators earn for verifying, and apps build on top of the open mapping layer.
-
-🧠 Core Tech
-Module	Description
-📦 edge-agent	Uploads video/sensor chunks to network
-🖼️ ai-pipeline	Depth estimation, segmentation, detection
-🗺️ pointcloud-engine	Generates 3D/4D point clouds & meshes
-🔐 tokenomics	Incentive layer (contributors, validators)
-🛰️ satellite-dao	NFT-DAO model for launching satellites
-🏗️ Status
-
-✅ Mobile + Web MVP in development 
-
-✅ AI models integrated: depth, segmentation, object detection
-
-✅ Point cloud generation working from raw video
-
-🔜 Hardware DePIN sensor kits (Phase 2)
-
-🔜 Satellite NFT-DAO launch (Phase 3)
-
-💰 Currently raising pre-seed round
-
-🛠️ Built With
-
-<->To be published Soon!
-
-🌐 Use Cases
-
-🤖 Autonomous vehicle navigation
-
-🕶️ AR/VR spatial computing
-
-🌳 Forest & environment monitoring
-
-🏙️ Urban planning & smart cities
-
-🛰️ Global 4D mapping for AI training
-
-👥 Team
-
-Founder: Rounak Kumar
-Age: 19 • Based in India 🇮🇳
-Solo founder building TreeView end-to-end: mobile app, AI models, backend, console, tokenomics, and DePIN roadmap.
-
-📈 Vision
-
-TreeView will be:
-
-🌍 The first community-owned 3D&4D Map of world.(With better positioning data than Centralized maps)
-
-🛰️ The first NFT-DAO to launch mapping satellites
-
-💡 A new infrastructure category for AI, robots, and the environment
-
-📬 Contact
-
-📧 Email: [rounakkumar@outlook.com
-]
-
-🐦 Twitter: 
-
-🌐 Website: Under development
-
-📜 License
 
 
-This repository is for demonstration and pre-seed purposes only. Code will be open-sourced in phases.
+TreeView
+
+Decentralized Spatial Intelligence Infrastructure
+
+Building the world's largest community-powered 3D mapping network for AI, robotics, autonomous systems, and digital twins.
+
+🌍 https://treeview.world
+
+
+---
+
+## Vision
+
+TreeView is building a decentralized spatial intelligence network where contributors continuously capture the physical world using smartphones and future dedicated hardware.
+
+Our AI pipeline transforms raw sensor data into high-quality 3D maps, semantic point clouds, and perception datasets that power the next generation of autonomous systems and foundation AI models.
+
+Instead of relying on centralized mapping providers, TreeView enables anyone to contribute, verify, and earn from creating the world's spatial intelligence layer.
+
+---
+
+## The Problem
+
+Modern AI requires enormous amounts of high-quality spatial data.
+
+Current mapping providers are:
+
+- Closed ecosystems
+- Expensive to access
+- Updated infrequently
+- Optimized for navigation instead of AI
+- Not community owned
+
+As robotics, autonomous vehicles, drones, XR, and physical AI continue to grow, demand for continuously updated 3D world models is increasing rapidly.
+
+---
+
+## Our Solution
+
+TreeView creates an open spatial intelligence network.
+
+Contributors capture roads and environments.
+
+↓
+
+AI reconstructs high-quality geometry.
+
+↓
+
+Semantic understanding is generated.
+
+↓
+
+Spatial datasets become available for AI companies, robotics, mapping platforms, and digital twin applications.
+
+Future contributors are rewarded through blockchain-based proof and incentive mechanisms.
+
+---
+
+# Architecture
+
+```
+
+Smartphone / Camera
+↓
+
+Capture Engine
+
+↓
+
+Upload Pipeline
+
+↓
+
+AI Reconstruction
+
+↓
+
+3D Point Cloud Generation
+
+↓
+
+Semantic Mapping
+
+↓
+
+Dataset Marketplace
+
+↓
+
+AI Companies • Robotics • Autonomous Vehicles • Smart Cities
+
+```
+
+---
+
+# Core Components
+
+| Component | Description |
+|------------|-------------|
+| Mobile Capture | Android application for multimodal data collection |
+| AI Pipeline | Video reconstruction, depth estimation, semantic understanding |
+| Point Cloud Engine | Generates dense 3D representations |
+| Dataset Pipeline | Creates AI-ready perception datasets |
+| Contributor Network | Community-powered mapping infrastructure |
+| Blockchain Layer | Dataset provenance and contributor rewards |
+
+---
+
+# Current Progress
+
+✅ Mobile capture application
+
+✅ GPS synchronized data collection
+
+✅ AI depth estimation
+
+✅ 3D point cloud generation
+
+✅ Semantic perception pipeline
+
+✅ 600+ km of mapping data captured
+
+✅ Cloud infrastructure deployed
+
+🚧 Dataset marketplace
+
+🚧 Contributor rewards
+
+🚧 Global contributor network
+
+---
+
+# Use Cases
+
+### Autonomous Driving
+
+High-quality perception datasets.
+
+### Robotics
+
+Localization, mapping and navigation.
+
+### Physical AI
+
+Training world models for embodied intelligence.
+
+### Digital Twins
+
+Persistent 3D representations of cities and infrastructure.
+
+### Smart Cities
+
+Infrastructure monitoring and planning.
+
+### Environmental Intelligence
+
+Large-scale Earth observation and monitoring.
+
+---
+
+# Why TreeView?
+
+Unlike traditional mapping companies, TreeView focuses on creating AI-native spatial intelligence rather than navigation maps.
+
+Every contribution helps build a continuously improving world model for machines.
+
+---
+
+# Technology
+
+Current stack includes
+
+- Computer Vision
+- Machine Learning
+- Point Cloud Processing
+- Structure from Motion
+- Depth Estimation
+- Semantic Segmentation
+- Cloud Infrastructure
+- Mobile Computing
+- Geospatial Data Processing
+
+Blockchain integrations are being developed for contributor attribution, immutable dataset provenance, and decentralized incentives.
+
+---
+
+# Roadmap
+
+### Phase 1
+
+- Mobile capture platform
+- AI reconstruction
+- Initial datasets
+
+### Phase 2
+
+- Global contributor network
+- Dataset marketplace
+- Enterprise APIs
+
+### Phase 3
+
+- Dedicated capture hardware
+- Real-time mapping
+- Global spatial intelligence network
+
+---
+
+# Repository Status
+
+This repository contains the early development of TreeView.
+
+The project is under active development and additional components will be released progressively.
+
+---
+
+# Contributing
+
+Community contributions are welcome.
+
+Documentation and contribution guidelines will be published as modules become open source.
+
+---
+
+# Contact
+
+Website
+
+https://treeview.world
+
+Email
+
+kumar@treeview.world
+
+LinkedIn
+
+https://www.linkedin.com/in/treeview-world-0a645a313/
+
+X
+
+https://x.com/treeviewworld
+
+---
+
+ Building the spatial intelligence layer for the AI era.
+
+
+
