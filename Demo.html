@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Treeview ply Viewer</title>
+
+    <!-- ✅ Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #121212;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .button-group {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .icon-button {
+            background: #f5f5f5;
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: relative;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .icon-button:hover {
+            background: #e0e0e0;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .icon-button .material-icons {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .icon-button::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            left: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #333;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .icon-button:hover::after {
+            opacity: 1;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        #note {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            max-width: 400px;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px;
+            border-radius: 8px;
+            color: #aaa;
+            line-height: 1.4em;
+        }
+
+        .icon-button:hover {
+            background: #e0e0e0;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+            transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+
+        }
+
+        .icon-button:active {
+            background: #d0d0d0;
+            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.4);
+            transform: scale(0.98);
+        }
+
+        .icon-button.active {
+            background: #bdbdbd;
+            /* Gray tone */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+            /* Depth effect */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.120.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.120.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.120.0/examples/js/loaders/PLYLoader.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="button-group">
+        <button class="icon-button" data-tooltip="Rotate" onclick="toggleRotation()" data-toggleable>
+            <span class="material-icons">rotate_right</span>
+        </button>
+
+        <button class="icon-button" data-tooltip="Reset View" onclick="resetCamera()">
+            <span class="material-icons">refresh</span>
+        </button>
+
+        <label class="icon-button" data-tooltip="Choose File">
+            <span class="material-icons">upload_file</span>
+            <input type="file" class="file-input" id="fileInput" accept=".ply" />
+        </label>
+    </div>
+
+    <div id="note">
+        ⚠️ This is a demo visualization generated from a raw video without depth sensing.
+        <br><br>
+        The point cloud shown here is sparse and approximate — full depth-based reconstruction is in development for
+        TreeView.
+    </div>
+    <script>
+        let scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0c0c0c);
+
+        let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 2);
+        const initialCameraPosition = camera.position.clone();
+
+        let renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        let controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.1;
+
+        let autoRotate = false;
+
+        function toggleRotation() {
+            autoRotate = !autoRotate;
+        }
+
+        function resetCamera() {
+            camera.position.copy(initialCameraPosition);
+            controls.reset();
+        }
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        document.getElementById('fileInput').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const contents = e.target.result;
+                const loader = new THREE.PLYLoader();
+                const geometry = loader.parse(contents);
+                geometry.computeVertexNormals();
+                geometry.computeBoundingBox();
+
+                const center = new THREE.Vector3();
+                geometry.boundingBox.getCenter(center);
+                geometry.translate(-center.x, -center.y, -center.z);
+
+                const hasColor = geometry.attributes.color !== undefined;
+                const material = hasColor
+                    ? new THREE.PointsMaterial({ size: 0.004, vertexColors: true })
+                    : new THREE.PointsMaterial({ size: 0.01, color: 0x00ffcc });
+
+                const points = new THREE.Points(geometry, material);
+
+                while (scene.children.length > 0) {
+                    scene.remove(scene.children[0]);
+                }
+
+                scene.add(points);
+            };
+            reader.readAsArrayBuffer(file);
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if (autoRotate) {
+                scene.rotation.y += 0.002;
+            }
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+    <script>
+    document.querySelectorAll('.icon-button[data-toggleable]').forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.toggle('active');
+        });
+    });
+</script>
+
+</script>
+
+
+</body>
+
+</html>
