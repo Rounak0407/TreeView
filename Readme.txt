@@ -6,7 +6,7 @@ Real-time Multimodal Mapping • AI Perception Datasets • 3D World Models • 
 
 🌍 **Ground Network Live in Bengaluru, India**
 
-[Website](https://treeview.world) • [LinkedIn](https://linkedin.com/company/treeview) • [X](https://x.com/treeviewworld)
+[Website](https://treeview.world) • [LinkedIn](https://www.linkedin.com/in/treeview-world-0a645a313/) • [X](https://x.com/treeviewworld)
 
 
 ---
